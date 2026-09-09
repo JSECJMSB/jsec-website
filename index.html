@@ -847,43 +847,43 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
 (function(){
   if(window.emailjs){ emailjs.init({ publicKey: 'qURoplUI4pDbPlJPs' }); }
 
-  function wireForm(formEl, buildParams){
-    if(!formEl) return;
-    formEl.addEventListener('submit', function(ev){
-      ev.preventDefault();
-      var btn = formEl.querySelector('button');
-      var original = btn.textContent;
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      emailjs.send('service_jplaz6g', 'template_ntp9mwk', buildParams(formEl)).then(function(){
-        btn.textContent = 'Sent — we\'ll be in touch!';
-        formEl.reset();
-        setTimeout(function(){ btn.textContent = original; btn.disabled = false; }, 5000);
-      }, function(err){
-        console.error('EmailJS error:', err);
-        btn.textContent = 'Failed — email info@jsecjmsb.ca directly';
-        btn.disabled = false;
-      });
+  function wireForm(formEl, templateId, fallbackEmail, buildParams){
+  if(!formEl) return;
+  formEl.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var btn = formEl.querySelector('button');
+    var original = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    emailjs.send('service_jplaz6g', templateId, buildParams(formEl)).then(function(){
+      btn.textContent = 'Sent — we\'ll be in touch!';
+      formEl.reset();
+      setTimeout(function(){ btn.textContent = original; btn.disabled = false; }, 5000);
+    }, function(err){
+      console.error('EmailJS error:', err);
+      btn.textContent = 'Failed — email ' + fallbackEmail + ' directly';
+      btn.disabled = false;
     });
-  }
-
-  wireForm(document.getElementById('sponsor-inquiry-form'), function(f){
-    return {
-      name: f.name.value,
-      email: f.email.value,
-      title: 'Sponsorship inquiry from ' + f.org.value,
-      message: 'Organization: ' + f.org.value + '\n\n' + f.message.value
-    };
   });
+}
 
-  wireForm(document.getElementById('general-contact-form'), function(f){
-    return {
-      name: f.name.value,
-      email: f.email.value,
-      title: 'Website contact from ' + f.name.value,
-      message: f.message.value
-    };
-  });
+wireForm(document.getElementById('sponsor-inquiry-form'), 'cssfhwc', 'sarah.tremblay@jsecjmsb.ca', function(f){
+  return {
+    name: f.name.value,
+    email: f.email.value,
+    title: 'Sponsorship inquiry from ' + f.org.value,
+    message: 'Organization: ' + f.org.value + '\n\n' + f.message.value
+  };
+});
+
+wireForm(document.getElementById('general-contact-form'), 'template_ntp9mwk', 'info@jsecjmsb.ca', function(f){
+  return {
+    name: f.name.value,
+    email: f.email.value,
+    title: 'Website contact from ' + f.name.value,
+    message: f.message.value
+  };
+});
 })();
 
 document.getElementById('burger').addEventListener('click',function(){
