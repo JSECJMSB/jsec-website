@@ -249,6 +249,10 @@ nav#navLinks a:hover{color:var(--forest);}
 .event-photo img{width:100%;height:100%;object-fit:cover;}
 .event-photo.no-photo{background:var(--forest);display:flex;align-items:center;justify-content:center;}
 .event-photo.no-photo svg{width:34px;height:34px;opacity:.5;}
+.event-photo.loading{background:#DCDCD3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.event-photo.loading svg{width:34px;height:34px;opacity:.4;}
+.event-photo.loading::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:jsecShimmer 1.8s infinite;}
+@keyframes jsecShimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
 .event-body{padding:22px;min-height:280px;display:flex;flex-direction:column;}
 .event-photo{flex-shrink:0;}
 .event-date{font-family:var(--serif);font-style:italic;color:var(--forest);font-size:14px;margin-bottom:8px;}
@@ -586,7 +590,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       </div>
 
       <div class="event-card fade-in">
-        <div class="event-photo"><img src="assets/event-case.jpg" alt="JSEC case competition"></div>
+                <div class="event-photo loading"><svg viewBox="0 0 24 24" fill="none" stroke="#8F8F84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         <div class="event-body">
           <div class="event-date">Oct 22, 2026 · 5:00–9:00 PM</div>
           <div class="meta">2026 · External venue TBD</div>
@@ -597,7 +601,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       </div>
 
       <div class="event-card fade-in">
-        <div class="event-photo"><img src="assets/event-finance.jpg" alt="JSEC sustainable finance conference"></div>
+                <div class="event-photo loading"><svg viewBox="0 0 24 24" fill="none" stroke="#8F8F84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         <div class="event-body">
           <div class="event-date">Nov 12, 2026 · 6:00–8:30 PM</div>
           <div class="meta">2026 · External venue TBD</div>
@@ -608,7 +612,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       </div>
 
 <div class="event-card fade-in">
-        <div class="event-photo"><img src="assets/event-case.jpg" alt="JSEC case competition"></div>
+                <div class="event-photo loading"><svg viewBox="0 0 24 24" fill="none" stroke="#8F8F84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         <div class="event-body">
           <div class="event-date">Feb 18, 2027 · 5:00–9:00 PM</div>
           <div class="meta">2027 · External venue TBD · Company-sponsored</div>
@@ -619,7 +623,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       </div>
 
       <div class="event-card fade-in">
-        <div class="event-photo"><img src="assets/event-youth-wide.jpg" alt="JSEC Youth Summit panel"></div>
+                <div class="event-photo loading"><svg viewBox="0 0 24 24" fill="none" stroke="#8F8F84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         <div class="event-body">
           <div class="event-date">Apr 3, 2027 · 1:15–7:00 PM</div>
           <div class="meta">2027 · External venue TBD</div>
