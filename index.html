@@ -255,8 +255,17 @@ nav#navLinks a:hover{color:var(--forest);}
 @keyframes jsecShimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
 .event-body{padding:22px;min-height:280px;display:flex;flex-direction:column;}
 .event-sponsors{margin:4px 0 18px;text-align:center;}
-.event-sponsors-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--forest);margin-bottom:10px;}
-.event-sponsors img{width:100%;height:auto;display:block;border-radius:12px;}
+.event-sponsors-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--forest);margin-bottom:14px;}
+.sponsor-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 26px;}
+.sponsor-logos img{height:auto;max-height:34px;max-width:120px;object-fit:contain;}
+.event-sponsors .sponsor-logos{gap:14px 18px;}
+.event-sponsors .sponsor-logos img{max-height:28px;max-width:100px;}
+.sponsor-logos img[src$="sponsor-cafe-bloc.png"],.sponsor-logos img[src$="sponsor-tyto.png"],.sponsor-logos img[src$="sponsor-dose.png"]{max-height:48px;}
+.sponsor-logos img[src$="sponsor-unscented-company.png"]{max-width:190px;}
+.event-sponsors .sponsor-logos img[src$="sponsor-unscented-company.png"]{max-width:170px;}
+.sponsor-strip{background:var(--white);padding:34px 0 38px;border-bottom:1px solid rgba(31,107,93,.15);text-align:center;}
+.sponsor-strip-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin:0 0 20px;}
+.sponsor-strip .sponsor-logos{gap:22px 40px;max-width:1000px;margin:0 auto;}
 .event-photo{flex-shrink:0;}
 .event-date{font-family:var(--serif);font-style:italic;color:var(--forest);font-size:14px;margin-bottom:8px;}
 .event-body h3{font-size:18px;margin-bottom:8px;}
@@ -413,6 +422,26 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       <div class="polaroid hc-2 rot-2"><img src="assets/event-finance.jpg" alt="JSEC sustainability conference"></div>
       <div class="hc-badge hc-badge-1"><div class="big">2016</div><div class="small">Fair&nbsp;Trade</div></div>
       <div class="hc-badge hc-badge-2"><div class="big">3</div><div class="small">Pillars</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPONSOR LOGOS ============ -->
+<section class="sponsor-strip">
+  <div class="wrap">
+    <p class="sponsor-strip-title">Thank you to our sponsors</p>
+    <div class="sponsor-logos">
+      <img src="assets/sponsor-unscented-company.png" alt="The Unscented Company" loading="lazy">
+      <img src="assets/sponsor-addenda-capital.png" alt="Addenda Capital" loading="lazy">
+      <img src="assets/sponsor-mackenzie-investments.png" alt="Mackenzie Investments" loading="lazy">
+      <img src="assets/sponsor-dose.png" alt="DOSE" loading="lazy">
+      <img src="assets/sponsor-fiera-capital.png" alt="Fiera Capital" loading="lazy">
+      <img src="assets/sponsor-metro.png" alt="Metro" loading="lazy">
+      <img src="assets/sponsor-gildan.png" alt="Gildan" loading="lazy">
+      <img src="assets/sponsor-quinn-partners.png" alt="Quinn+Partners" loading="lazy">
+      <img src="assets/sponsor-finance-montreal.png" alt="Finance Montréal" loading="lazy">
+      <img src="assets/sponsor-cafe-bloc.png" alt="Café Bloc" loading="lazy">
+      <img src="assets/sponsor-tyto.png" alt="TYTO" loading="lazy">
     </div>
   </div>
 </section>
@@ -590,7 +619,19 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
           <p>A casual meet-and-greet connecting JMSB students with sustainability professionals, kicking off relationship-building ahead of the mentorship program.</p>
           <div class="event-sponsors">
             <div class="event-sponsors-title">Thank you to our sponsors</div>
-            <img src="assets/networking-cocktail-sponsors.png" alt="Networking Cocktail sponsors: The Unscented Company, Addenda Capital, Mackenzie Investments, DOSE, Fiera Capital, Metro, Gildan, Quinn+Partners, Finance Montréal, Café Bloc, and TYTO" loading="lazy">
+            <div class="sponsor-logos">
+              <img src="assets/sponsor-unscented-company.png" alt="The Unscented Company" loading="lazy">
+              <img src="assets/sponsor-addenda-capital.png" alt="Addenda Capital" loading="lazy">
+              <img src="assets/sponsor-mackenzie-investments.png" alt="Mackenzie Investments" loading="lazy">
+              <img src="assets/sponsor-dose.png" alt="DOSE" loading="lazy">
+              <img src="assets/sponsor-fiera-capital.png" alt="Fiera Capital" loading="lazy">
+              <img src="assets/sponsor-metro.png" alt="Metro" loading="lazy">
+              <img src="assets/sponsor-gildan.png" alt="Gildan" loading="lazy">
+              <img src="assets/sponsor-quinn-partners.png" alt="Quinn+Partners" loading="lazy">
+              <img src="assets/sponsor-finance-montreal.png" alt="Finance Montréal" loading="lazy">
+              <img src="assets/sponsor-cafe-bloc.png" alt="Café Bloc" loading="lazy">
+              <img src="assets/sponsor-tyto.png" alt="TYTO" loading="lazy">
+            </div>
           </div>
           <a href="https://evelya.co/en/john-molson-school-of-business/john-molson-sustainable-enterprise-committee/jsec-networking-cocktail-3148" target="_blank" class="btn btn-primary">Get Tickets</a>
         </div>
