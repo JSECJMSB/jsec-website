@@ -260,6 +260,14 @@ nav#navLinks a:hover{color:var(--forest);}
 .sponsor-logos img{height:auto;max-height:34px;max-width:120px;object-fit:contain;}
 .event-sponsors .sponsor-logos{gap:14px 18px;}
 .event-sponsors .sponsor-logos img{max-height:28px;max-width:100px;}
+/* Past events: greyed out with a "Completed" stamp (set automatically by script below) */
+.event-card.is-past{border-color:#A7A79C;box-shadow:none;}
+.event-card.is-past .event-photo{position:relative;}
+.event-card.is-past .event-photo img{filter:grayscale(1);opacity:.45;}
+.event-card.is-past .event-body{opacity:.6;}
+.event-card.is-past .event-sponsors{opacity:1;}
+.event-done-stamp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:15px;color:#fff;background:rgba(60,60,55,.35);}
+.event-done-stamp span{background:#5B5B53;padding:6px 14px;border-radius:999px;}
 .sponsor-logos img[src$="sponsor-cafe-bloc.png"],.sponsor-logos img[src$="sponsor-tyto.png"],.sponsor-logos img[src$="sponsor-dose.png"]{max-height:48px;}
 .sponsor-logos img[src$="sponsor-unscented-company.png"]{max-width:190px;}
 .event-sponsors .sponsor-logos img[src$="sponsor-unscented-company.png"]{max-width:170px;}
@@ -610,7 +618,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
     </div>
     <div class="events-grid">
 
-      <div class="event-card fade-in">
+      <div class="event-card fade-in" data-end="2026-09-30T20:00:00-04:00">
         <div class="event-photo"><img src="https://evelya-lexya-images.s3.amazonaws.com/b07cc10c-49b3-4302-ae81-abab749d7854" alt="JSEC Networking Cocktail poster"></div>
         <div class="event-body">
           <div class="event-date">Sep 30, 2026 · 5:00–8:00 PM</div>
@@ -637,18 +645,18 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
         </div>
       </div>
 
-      <div class="event-card fade-in">
-                <div class="event-photo loading"><svg viewBox="0 0 24 24" fill="none" stroke="#8F8F84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+      <div class="event-card fade-in" data-end="2026-10-22T21:00:00-04:00">
+        <div class="event-photo"><img src="https://evelya-lexya-images.s3.amazonaws.com/eb4687cc-b89c-4e6b-a1b5-2bc01832ad80" alt="JSEC Sustainability Case Competition poster"></div>
         <div class="event-body">
           <div class="event-date">Oct 22, 2026 · 5:00–9:00 PM</div>
-          <div class="meta">2026 · External venue TBD</div>
-          <h3>Beginner Case Competition (Fall)</h3>
-          <p>Students tackle a sustainability-focused business case competitively, with a meet-and-greet component for networking with sustainability professionals.</p>
-                  <span class="btn btn-outline" style="opacity:.55;pointer-events:none;cursor:default;">Upcoming</span>
+          <div class="meta">John Molson Building · Concordia University, Montréal</div>
+          <h3>Sustainability Case Competition</h3>
+          <p>Presented by Mackenzie Investments. A beginner-friendly case competition: teams of 3–5 tackle a real sustainability challenge and pitch to industry judges. No experience needed, cash prize for the winners.</p>
+          <a href="https://evelya.co/john-molson-school-of-business/john-molson-sustainable-enterprise-committee/jsec-beginner-case-competition-6787" target="_blank" class="btn btn-primary">Register Now</a>
         </div>
       </div>
 
-      <div class="event-card fade-in">
+      <div class="event-card fade-in" data-end="2026-11-12T20:30:00-05:00">
                 <div class="event-photo loading"><svg viewBox="0 0 24 24" fill="none" stroke="#8F8F84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         <div class="event-body">
           <div class="event-date">Nov 12, 2026 · 6:00–8:30 PM</div>
@@ -659,7 +667,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
         </div>
       </div>
 
-<div class="event-card fade-in">
+<div class="event-card fade-in" data-end="2027-02-18T21:00:00-05:00">
                 <div class="event-photo loading"><svg viewBox="0 0 24 24" fill="none" stroke="#8F8F84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         <div class="event-body">
           <div class="event-date">Feb 18, 2027 · 5:00–9:00 PM</div>
@@ -670,7 +678,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
         </div>
       </div>
 
-      <div class="event-card fade-in">
+      <div class="event-card fade-in" data-end="2027-04-03T19:00:00-04:00">
                 <div class="event-photo loading"><svg viewBox="0 0 24 24" fill="none" stroke="#8F8F84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         <div class="event-body">
           <div class="event-date">Apr 3, 2027 · 1:15–7:00 PM</div>
@@ -998,5 +1006,20 @@ window.addEventListener('popstate', function(){
 showPage((location.hash || '#page-home').replace('#',''));
 </script>
 
+<script>
+/* Auto-mark past events: any .event-card whose data-end time has passed gets greyed out with a ✕ Completed stamp. */
+(function(){
+  var now=Date.now();
+  document.querySelectorAll('.event-card[data-end]').forEach(function(card){
+    var end=Date.parse(card.getAttribute('data-end'));
+    if(isNaN(end)||now<end) return;
+    card.classList.add('is-past');
+    var photo=card.querySelector('.event-photo');
+    if(photo){photo.classList.remove('loading');var st=document.createElement('div');st.className='event-done-stamp';st.innerHTML='<span>\u2715 Completed</span>';photo.appendChild(st);}
+    var btn=card.querySelector('.event-body > .btn');
+    if(btn){var done=document.createElement('span');done.className='btn btn-outline';done.style.cssText='opacity:.7;pointer-events:none;cursor:default;';done.textContent='Event completed';btn.replaceWith(done);}
+  });
+})();
+</script>
 </body>
 </html>
