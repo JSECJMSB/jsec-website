@@ -245,8 +245,8 @@ nav#navLinks a:hover{color:var(--forest);}
 /* ============ EVENTS ============ */
 .events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 30px;}
 .event-card{background:var(--white);border:2.5px solid var(--forest);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-hard);display:flex;flex-direction:column;}
-.event-photo{height:150px;overflow:hidden;}
-.event-photo img{width:100%;height:100%;object-fit:cover;}
+.event-photo{aspect-ratio:4/5;overflow:hidden;background:#EEEEE6;border-bottom:2.5px solid var(--forest);}
+.event-photo img{width:100%;height:100%;object-fit:contain;display:block;}
 .event-photo.no-photo{background:var(--forest);display:flex;align-items:center;justify-content:center;}
 .event-photo.no-photo svg{width:34px;height:34px;opacity:.5;}
 .event-photo.loading{background:#DCDCD3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
