@@ -1084,45 +1084,80 @@ showPage((location.hash || '#page-home').replace('#',''));
 })();
 </script>
 <script>
-/* Countdown to the next upcoming event: floating pill on the home page (hides on scroll) + bar under that event's poster. */
+/* Countdown to the next event with ACTIVE Evelya registration (card has a Register/Tickets button linking to evelya).
+   Cards still showing "Upcoming" are skipped. Shows "Happening now" between data-start and data-end,
+   then automatically moves on to the next active event once data-end passes (even if the page stays open). */
 (function(){
-  var now=Date.now(),next=null,start=0;
-  document.querySelectorAll('.event-card[data-start]').forEach(function(card){
-    var t=Date.parse(card.getAttribute('data-start'));
-    if(!isNaN(t)&&t>now&&(!next||t<start)){next=card;start=t;}
-  });
-  if(!next) return;
-  var title=next.querySelector('h3').textContent;
   var units='<div class="cd-units"><div class="cd-unit"><b data-u="d">0</b><small>Days</small></div><div class="cd-unit"><b data-u="h">0</b><small>Hrs</small></div><div class="cd-unit"><b data-u="m">0</b><small>Min</small></div><div class="cd-unit"><b data-u="s">0</b><small>Sec</small></div></div>';
-  var bar=document.createElement('div');
-  bar.className='event-countdown';
-  bar.innerHTML='<span class="cd-label">Starts in</span>'+units;
-  next.querySelector('.event-photo').insertAdjacentElement('afterend',bar);
-  var pill=document.createElement('a');
-  pill.className='home-countdown';
-  pill.href='#page-events';
-  pill.setAttribute('data-page','page-events');
-  pill.innerHTML='<div><div class="cd-label">Next event</div><div class="cd-title"></div></div>'+units;
-  pill.querySelector('.cd-title').textContent=title;
-  pill.addEventListener('click',function(e){
-    e.preventDefault();
-    history.pushState(null,'','#page-events');
-    showPage('page-events');
-    requestAnimationFrame(function(){next.scrollIntoView({block:'center'});});
-  });
-  document.getElementById('page-home').appendChild(pill);
-  function onScroll(){pill.classList.toggle('cd-hidden',window.scrollY>60);}
-  window.addEventListener('scroll',onScroll,{passive:true});
-  onScroll();
+  var bar=null,pill=null,timer=null,next=null,start=0,end=0;
   function pad(n){return n<10?'0'+n:''+n;}
-  function tick(){
-    var diff=Math.max(0,start-Date.now());
-    var v={d:Math.floor(diff/864e5),h:pad(Math.floor(diff/36e5)%24),m:pad(Math.floor(diff/6e4)%60),s:pad(Math.floor(diff/1e3)%60)};
-    document.querySelectorAll('.cd-units [data-u]').forEach(function(el){el.textContent=v[el.getAttribute('data-u')];});
-    if(diff===0){clearInterval(timer);bar.querySelector('.cd-label').textContent='Happening now';pill.querySelector('.cd-label').textContent='Happening now';}
+  function hasActiveRegistration(card){return !!card.querySelector('.event-body a.btn[href*="evelya"]');}
+  function pick(){
+    var now=Date.now(),best=null,bs=0,be=0;
+    document.querySelectorAll('.event-card[data-start]').forEach(function(card){
+      var t=Date.parse(card.getAttribute('data-start')),e=Date.parse(card.getAttribute('data-end'));
+      if(isNaN(t)) return;
+      if(isNaN(e)) e=t;
+      if(e<=now||!hasActiveRegistration(card)) return;
+      if(!best||t<bs){best=card;bs=t;be=e;}
+    });
+    next=best;start=bs;end=be;
   }
-  tick();
-  var timer=setInterval(tick,1000);
+  function clear(){
+    if(timer){clearInterval(timer);timer=null;}
+    if(bar){bar.remove();bar=null;}
+    if(pill){pill.remove();pill=null;}
+  }
+  function build(){
+    clear();pick();
+    if(!next) return;
+    var card=next;
+    bar=document.createElement('div');
+    bar.className='event-countdown';
+    bar.innerHTML='<span class="cd-label">Starts in</span>'+units;
+    card.querySelector('.event-photo').insertAdjacentElement('afterend',bar);
+    pill=document.createElement('a');
+    pill.className='home-countdown';
+    pill.href='#page-events';
+    pill.setAttribute('data-page','page-events');
+    pill.innerHTML='<div><div class="cd-label">Next event</div><div class="cd-title"></div></div>'+units;
+    pill.querySelector('.cd-title').textContent=card.querySelector('h3').textContent;
+    pill.addEventListener('click',function(e){
+      e.preventDefault();
+      history.pushState(null,'','#page-events');
+      showPage('page-events');
+      requestAnimationFrame(function(){card.scrollIntoView({block:'center'});});
+    });
+    document.getElementById('page-home').appendChild(pill);
+    onScroll();
+    tick();
+    timer=setInterval(tick,1000);
+  }
+  function tick(){
+    var now=Date.now();
+    if(now>=end){markPast(next);build();return;}
+    var live=now>=start;
+    var diff=live?0:start-now;
+    var v={d:Math.floor(diff/864e5),h:pad(Math.floor(diff/36e5)%24),m:pad(Math.floor(diff/6e4)%60),s:pad(Math.floor(diff/1e3)%60)};
+    [bar,pill].forEach(function(root){root.querySelectorAll('[data-u]').forEach(function(el){el.textContent=v[el.getAttribute('data-u')];});});
+    var lbl=live?'Happening now':null;
+    bar.querySelector('.cd-label').textContent=lbl||'Starts in';
+    pill.querySelector('.cd-label').textContent=lbl||'Next event';
+    bar.querySelector('.cd-units').style.display=live?'none':'';
+    pill.querySelector('.cd-units').style.display=live?'none':'';
+  }
+  /* Grey out an event that just ended while the page was open (same look as the on-load check above). */
+  function markPast(card){
+    if(!card||card.classList.contains('is-past')) return;
+    card.classList.add('is-past');
+    var photo=card.querySelector('.event-photo');
+    if(photo){var st=document.createElement('div');st.className='event-done-stamp';st.innerHTML='<span>✕ Completed</span>';photo.appendChild(st);}
+    var btn=card.querySelector('.event-body > .btn');
+    if(btn){var done=document.createElement('span');done.className='btn btn-outline';done.style.cssText='opacity:.7;pointer-events:none;cursor:default;';done.textContent='Event completed';btn.replaceWith(done);}
+  }
+  function onScroll(){if(pill) pill.classList.toggle('cd-hidden',window.scrollY>60);}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  build();
 })();
 </script>
 </body>
