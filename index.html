@@ -292,6 +292,18 @@ nav#navLinks a:hover{color:var(--forest);}
 .cd-unit{background:var(--forest);color:var(--cream);border-radius:8px;min-width:44px;padding:5px 6px;text-align:center;line-height:1;}
 .cd-unit b{display:block;font-family:var(--display);font-size:19px;font-weight:800;}
 .cd-unit small{display:block;font-size:9px;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-top:3px;}
+.featured-banner{display:grid;grid-template-columns:150px 1fr auto;gap:28px;align-items:center;background:var(--white);border:2.5px solid var(--forest);border-radius:16px;padding:18px 26px 18px 18px;box-shadow:var(--shadow-hard);}
+.featured-banner img{width:150px;height:auto;border-radius:12px;display:block;}
+.featured-banner .fb-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin-bottom:6px;}
+.featured-banner h3{font-size:clamp(19px,2vw,23px);margin:0 0 6px;}
+.featured-banner h3 span{color:var(--forest);}
+.featured-banner p{font-size:14.5px;color:var(--muted);margin:0;max-width:560px;}
+.featured-banner .fb-ctas{display:flex;flex-direction:column;gap:12px;}
+.featured-banner .btn{padding:11px 18px;font-size:12.5px;border-width:2px;box-shadow:var(--shadow-hard-sm);text-align:center;white-space:nowrap;}
+.featured-wrap-home{background:var(--paper);padding:44px 0;}
+.featured-wrap-events{margin:0 0 40px;}
+@media (max-width:900px){.featured-banner{grid-template-columns:110px 1fr;gap:18px;padding:16px;}.featured-banner img{width:110px;}.featured-banner .fb-ctas{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;}}
+@media (max-width:520px){.featured-banner{grid-template-columns:1fr;}.featured-banner img{width:150px;}}
 .home-countdown{position:fixed;left:50%;bottom:22px;z-index:45;transform:translate(-50%,0);display:flex;align-items:center;gap:16px;background:var(--cream);border:2.5px solid var(--forest);border-radius:16px;padding:10px 12px 10px 18px;box-shadow:var(--shadow-hard);color:var(--ink);text-decoration:none;transition:opacity .35s ease,transform .35s ease;max-width:calc(100% - 32px);}
 .home-countdown.cd-hidden{opacity:0;transform:translate(-50%,24px);pointer-events:none;}
 .home-countdown .cd-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);}
@@ -477,6 +489,24 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
   </div>
 </section>
 
+<!-- ============ FEATURED BY CONCORDIA ============ -->
+<section class="featured-wrap-home">
+  <div class="wrap">
+    <div class="featured-banner fade-in">
+      <a href="https://www.concordia.ca/cuevents/offices/vpss/sustainability/2026/10/22/sustainability-case-competition.html" target="_blank"><img src="assets/featured-concordia-link.jpg" alt="Concordia University event page: Sustainability Case Competition" loading="lazy"></a>
+      <div>
+        <span class="fb-tag">★ As featured by Concordia</span>
+        <h3>Featured by <span>@cusustainabilityoffice</span></h3>
+        <p>Concordia's Sustainability Office is featuring our Sustainability Case Competition, presented by Mackenzie Investments, as part of Campus Sustainability Month. Oct 22 · 5–9 PM · John Molson Building.</p>
+      </div>
+      <div class="fb-ctas">
+        <a href="https://www.concordia.ca/cuevents/offices/vpss/sustainability/2026/10/22/sustainability-case-competition.html" target="_blank" class="btn btn-outline">See it on Concordia.ca</a>
+        <a href="https://evelya.co/john-molson-school-of-business/john-molson-sustainable-enterprise-committee/jsec-beginner-case-competition-6787" target="_blank" class="btn btn-primary">Register Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PHOTO BANNER ============ -->
 <div class="photo-banner">
   <img src="assets/cover-bg.jpg" alt="JSEC event — Business Beyond Tomorrow">
@@ -639,6 +669,20 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       <h2>Where sustainability meets business</h2>
       <p>Our flagship conference and recurring workshops — tickets and RSVPs handled through our Evelya event page.</p>
     </div>
+    <div class="featured-wrap-events">
+    <div class="featured-banner fade-in">
+      <a href="https://www.concordia.ca/cuevents/offices/vpss/sustainability/2026/10/22/sustainability-case-competition.html" target="_blank"><img src="assets/featured-concordia-link.jpg" alt="Concordia University event page: Sustainability Case Competition" loading="lazy"></a>
+      <div>
+        <span class="fb-tag">★ As featured by Concordia</span>
+        <h3>Featured by <span>@cusustainabilityoffice</span></h3>
+        <p>Concordia's Sustainability Office is featuring our Sustainability Case Competition, presented by Mackenzie Investments, as part of Campus Sustainability Month. Oct 22 · 5–9 PM · John Molson Building.</p>
+      </div>
+      <div class="fb-ctas">
+        <a href="https://www.concordia.ca/cuevents/offices/vpss/sustainability/2026/10/22/sustainability-case-competition.html" target="_blank" class="btn btn-outline">See it on Concordia.ca</a>
+        <a href="https://evelya.co/john-molson-school-of-business/john-molson-sustainable-enterprise-committee/jsec-beginner-case-competition-6787" target="_blank" class="btn btn-primary">Register Now</a>
+      </div>
+    </div>
+    </div>
     <div class="events-grid">
 
       <div class="event-card fade-in" data-start="2026-09-30T17:00:00-04:00" data-end="2026-09-30T20:00:00-04:00">
@@ -675,10 +719,6 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
           <div class="meta">John Molson Building · 1450 Rue Guy, Montréal</div>
           <h3>Sustainability Case Competition</h3>
           <p>Presented by Mackenzie Investments. A beginner-friendly case competition: teams of 3–5 tackle a real sustainability challenge and pitch to industry judges. No experience needed, cash prize for the winners.</p>
-          <a href="https://www.concordia.ca/cuevents/offices/vpss/sustainability/2026/10/22/sustainability-case-competition.html" target="_blank" style="display:flex;align-items:center;gap:.85rem;margin:.25rem 0 1.1rem;padding:.6rem;border:2px solid var(--forest);border-radius:12px;text-decoration:none;color:inherit;background:#F3F1E6;">
-            <img src="assets/featured-concordia-link.jpg" alt="Concordia University event page: Sustainability Case Competition" loading="lazy" style="width:110px;height:auto;border-radius:10px;flex-shrink:0;">
-            <span style="font-size:.85rem;line-height:1.4;min-width:0;"><strong style="display:block;color:var(--forest);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.2rem;overflow-wrap:anywhere;">★ Featured by<br><span style="text-transform:none;letter-spacing:0;font-size:.78rem;">@cusustainabilityoffice</span></strong>Part of Concordia's Campus Sustainability Month. <span style="color:var(--forest);font-weight:600;text-decoration:underline;">See it on Concordia.ca →</span></span>
-          </a>
           <a href="https://evelya.co/john-molson-school-of-business/john-molson-sustainable-enterprise-committee/jsec-beginner-case-competition-6787" target="_blank" class="btn btn-primary">Register Now</a>
         </div>
       </div>
