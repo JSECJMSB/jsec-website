@@ -1075,7 +1075,7 @@ showPage((location.hash || '#page-home').replace('#',''));
     var photo=card.querySelector('.event-photo');
     if(photo){photo.classList.remove('loading');var st=document.createElement('div');st.className='event-done-stamp';st.innerHTML='<span>\u2715 Completed</span>';photo.appendChild(st);}
     var btn=card.querySelector('.event-body > .btn');
-    if(btn){var done=document.createElement('span');done.className='btn btn-outline';done.style.cssText='opacity:.7;pointer-events:none;cursor:default;';done.textContent='Event completed';btn.replaceWith(done);}
+    if(btn){btn.remove();}
   });
 })();
 </script>
@@ -1149,7 +1149,7 @@ showPage((location.hash || '#page-home').replace('#',''));
     var photo=card.querySelector('.event-photo');
     if(photo){var st=document.createElement('div');st.className='event-done-stamp';st.innerHTML='<span>✕ Completed</span>';photo.appendChild(st);}
     var btn=card.querySelector('.event-body > .btn');
-    if(btn){var done=document.createElement('span');done.className='btn btn-outline';done.style.cssText='opacity:.7;pointer-events:none;cursor:default;';done.textContent='Event completed';btn.replaceWith(done);}
+    if(btn){btn.remove();}
   }
   function onScroll(){if(pill) pill.classList.toggle('cd-hidden',window.scrollY>60);}
   window.addEventListener('scroll',onScroll,{passive:true});
