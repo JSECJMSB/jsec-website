@@ -716,14 +716,14 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
         </div>
       </div>
 
-      <div class="event-card fade-in" data-start="2026-11-10T18:00:00-05:00" data-end="2026-11-10T20:30:00-05:00">
+      <div class="event-card fade-in" data-live="true" data-start="2026-11-10T18:00:00-05:00" data-end="2026-11-10T20:30:00-05:00">
                 <div class="event-photo coming-up"><div class="coming-up-label"><span>Coming Up</span><small>Poster &amp; details soon</small></div></div>
         <div class="event-body">
           <div class="event-date">Nov 10, 2026 · 6:00–8:30 PM</div>
           <div class="meta">Espace Rodier · Montréal</div>
           <h3>Sustainable Finance Conference</h3>
           <p>A conference for finance students on sustainable investing and banking, featuring panels with our sustainability-focused sponsor partners.</p>
-                  <span class="btn btn-outline" style="opacity:.55;pointer-events:none;cursor:default;">Upcoming</span>
+                  <span class="btn btn-outline" style="opacity:.55;pointer-events:none;cursor:default;">Tickets coming soon</span>
         </div>
       </div>
 
@@ -1089,7 +1089,7 @@ showPage((location.hash || '#page-home').replace('#',''));
   var units='<div class="cd-units"><div class="cd-unit"><b data-u="d">0</b><small>Days</small></div><div class="cd-unit"><b data-u="h">0</b><small>Hrs</small></div><div class="cd-unit"><b data-u="m">0</b><small>Min</small></div><div class="cd-unit"><b data-u="s">0</b><small>Sec</small></div></div>';
   var bar=null,pill=null,timer=null,next=null,start=0,end=0;
   function pad(n){return n<10?'0'+n:''+n;}
-  function hasActiveRegistration(card){return !!card.querySelector('.event-body a.btn[href*="evelya"]');}
+  function hasActiveRegistration(card){return card.hasAttribute('data-live')||!!card.querySelector('.event-body a.btn[href*="evelya"]');}
   function pick(){
     var now=Date.now(),best=null,bs=0,be=0;
     document.querySelectorAll('.event-card[data-start]').forEach(function(card){
