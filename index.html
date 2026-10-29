@@ -1212,7 +1212,7 @@ showPage((location.hash || '#page-home').replace('#',''));
       showPage('page-events');
       requestAnimationFrame(function(){card.scrollIntoView({block:'center'});});
     });
-    document.getElementById('page-home').appendChild(pill);
+    document.body.appendChild(pill);
     onScroll();
     tick();
     timer=setInterval(tick,1000);
@@ -1224,6 +1224,7 @@ showPage((location.hash || '#page-home').replace('#',''));
     var diff=live?0:start-now;
     var v={d:Math.floor(diff/864e5),h:pad(Math.floor(diff/36e5)%24),m:pad(Math.floor(diff/6e4)%60),s:pad(Math.floor(diff/1e3)%60)};
     [bar,pill].forEach(function(root){root.querySelectorAll('[data-u]').forEach(function(el){el.textContent=v[el.getAttribute('data-u')];});});
+    onScroll();
     var lbl=live?'Happening now':null;
     bar.querySelector('.cd-label').textContent=lbl||'Starts in';
     pill.querySelector('.cd-label').textContent=lbl||'Next event';
@@ -1239,8 +1240,11 @@ showPage((location.hash || '#page-home').replace('#',''));
     var btn=card.querySelector('.event-body > .btn');
     if(btn){btn.remove();}
   }
-  function onScroll(){if(pill) pill.classList.toggle('cd-hidden',window.scrollY>60);}
+  /* Stays visible the whole time you scroll on Home and Who We Are; hidden on other pages. */
+  function onScroll(){if(!pill) return; var p=document.querySelector('.page.active'); pill.classList.toggle('cd-hidden',!p||(p.id!=='page-home'&&p.id!=='page-who-we-are'));}
   window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('popstate',onScroll);
+  document.addEventListener('click',function(){requestAnimationFrame(onScroll);});
   build();
 })();
 </script>
