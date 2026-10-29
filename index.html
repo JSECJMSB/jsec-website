@@ -354,6 +354,16 @@ nav#navLinks a:hover{color:var(--forest);}
 .blog-card .date{font-size:12px;color:var(--muted);font-style:italic;font-family:var(--serif);margin-top:auto;}
 .blog-more{margin-top:34px;text-align:center;}
 
+/* ============ PODCAST ============ */
+.pod-list{display:flex;flex-direction:column;gap:30px;}
+.pod-ep{display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center;background:var(--paper);border:2.5px solid var(--forest);border-radius:16px;padding:22px;box-shadow:var(--shadow-hard);}
+.pod-ep img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:2px solid var(--forest);display:block;}
+.pod-ep .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:10px;}
+.pod-ep h3{font-size:21px;margin-bottom:10px;}
+.pod-ep p{font-size:13.5px;color:var(--muted);margin-bottom:18px;}
+.pod-links{display:flex;flex-wrap:wrap;gap:12px;}
+@media (max-width:900px){.pod-ep{grid-template-columns:1fr;}}
+
 /* ============ RESOURCES ============ */
 .res-list{display:grid;grid-template-columns:1fr 1fr;gap:0 60px;}
 .res-item{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);}
@@ -466,6 +476,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       <a href="#page-home" data-page="page-home">Home</a>
       <a href="#page-who-we-are" data-page="page-who-we-are">Who We Are</a>
       <a href="#page-events" data-page="page-events">Events</a>
+      <a href="#page-podcast" data-page="page-podcast">Podcast</a>
       <a href="#page-get-involved" data-page="page-get-involved">Get Involved</a>
       <a href="#page-contact" data-page="page-contact" data-anchor="contact-us">Contact</a>
       <a href="#page-contact" data-page="page-contact" data-anchor="contact" class="nav-cta">Sponsor Us</a>
@@ -807,6 +818,35 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
 
 </div>
 
+<div class="page" id="page-podcast">
+<!-- ============ PODCAST ============ -->
+<section class="section-pad grain" id="podcast">
+  <div class="wrap">
+    <div class="sec-head fade-in">
+      <span class="eyebrow">Planted in Business</span>
+      <h2>The JSEC Podcast</h2>
+      <p>Planted in Business is JSEC&rsquo;s podcast, where we talk with leaders building a more sustainable future through business. Pick an episode, then watch it on YouTube or listen on Spotify.</p>
+    </div>
+    <div class="pod-list">
+      <!-- Episode 1 (add new episodes on top: copy this block) -->
+      <article class="pod-ep fade-in">
+        <a href="https://www.youtube.com/watch?v=NlOjfIw2RbE" target="_blank"><img src="https://i.ytimg.com/vi/NlOjfIw2RbE/hqdefault.jpg" alt="Planted in Business Episode 1: AI and ESG data collection" loading="lazy"></a>
+        <div>
+          <div class="tag">Episode 1</div>
+          <h3>AI &amp; ESG Data Collection with Charly Bastard, Co-Founder of Novalytics</h3>
+          <p>How is AI changing the way companies collect and report ESG data? Charly talks about building Novalytics, why ESG data is such a challenge, and how AI turns messy sustainability data into something companies can actually use.</p>
+          <div class="pod-links">
+            <a href="https://www.youtube.com/watch?v=NlOjfIw2RbE" target="_blank" class="btn btn-primary">Watch on YouTube</a>
+            <a href="https://open.spotify.com/episode/7pkFtR6pNInjmKsBflmgp6" target="_blank" class="btn btn-outline">Listen on Spotify</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+</div>
+
 <div class="page" id="page-resources">
 <!-- ============ RESOURCES ============ -->
 <section class="section-pad" id="resources" style="background:var(--paper)">
@@ -941,6 +981,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
           <li><a href="#page-events" data-page="page-events">Events</a></li>
           <li><a href="#page-get-involved" data-page="page-get-involved">Get Involved</a></li>
           <li><a href="#page-blog" data-page="page-blog">Blog</a></li>
+          <li><a href="#page-podcast" data-page="page-podcast">Podcast</a></li>
         </ul>
       </div>
       <div>
