@@ -355,14 +355,22 @@ nav#navLinks a:hover{color:var(--forest);}
 .blog-more{margin-top:34px;text-align:center;}
 
 /* ============ PODCAST ============ */
-.pod-list{display:flex;flex-direction:column;gap:30px;}
-.pod-ep{display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center;background:var(--paper);border:2.5px solid var(--forest);border-radius:16px;padding:22px;box-shadow:var(--shadow-hard);}
-.pod-ep img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:2px solid var(--forest);display:block;}
-.pod-ep .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:10px;}
-.pod-ep h3{font-size:21px;margin-bottom:10px;}
-.pod-ep p{font-size:13.5px;color:var(--muted);margin-bottom:18px;}
-.pod-links{display:flex;flex-wrap:wrap;gap:12px;}
-@media (max-width:900px){.pod-ep{grid-template-columns:1fr;}}
+.pod-ep{margin-bottom:56px;}
+.pod-ep:last-child{margin-bottom:0;}
+.pod-ep-head{margin-bottom:22px;}
+.pod-ep-head .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:8px;}
+.pod-ep-head h3{font-size:22px;margin-bottom:8px;}
+.pod-ep-head p{font-size:14px;color:var(--muted);max-width:760px;}
+.pod-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 30px;align-items:start;}
+.pod-card{background:var(--paper);border:2.5px solid var(--forest);border-radius:16px;padding:26px;box-shadow:var(--shadow-hard);display:flex;flex-direction:column;}
+.pod-card .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:10px;}
+.pod-card h3{font-size:21px;margin-bottom:8px;}
+.pod-card p{font-size:13.5px;color:var(--muted);margin-bottom:18px;}
+.pod-embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:2px solid var(--forest);background:var(--ink);}
+.pod-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.pod-spotify{width:100%;height:352px;border:0;border-radius:12px;}
+.pod-card .btn{margin-top:18px;align-self:flex-start;}
+@media (max-width:900px){.pod-grid{grid-template-columns:1fr;}}
 
 /* ============ RESOURCES ============ */
 .res-list{display:grid;grid-template-columns:1fr 1fr;gap:0 60px;}
@@ -828,16 +836,27 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       <p>Planted in Business is JSEC&rsquo;s podcast, where we talk with leaders building a more sustainable future through business. Pick an episode, then watch it on YouTube or listen on Spotify.</p>
     </div>
     <div class="pod-list">
-      <!-- Episode 1 (add new episodes on top: copy this block) -->
-      <article class="pod-ep fade-in">
-        <a href="https://www.youtube.com/watch?v=NlOjfIw2RbE" target="_blank"><img src="https://i.ytimg.com/vi/NlOjfIw2RbE/hqdefault.jpg" alt="Planted in Business Episode 1: AI and ESG data collection" loading="lazy"></a>
-        <div>
+      <!-- Episode 1 (add new episodes on top: copy this whole article block) -->
+      <article class="pod-ep">
+        <div class="pod-ep-head fade-in">
           <div class="tag">Episode 1</div>
           <h3>AI &amp; ESG Data Collection with Charly Bastard, Co-Founder of Novalytics</h3>
           <p>How is AI changing the way companies collect and report ESG data? Charly talks about building Novalytics, why ESG data is such a challenge, and how AI turns messy sustainability data into something companies can actually use.</p>
-          <div class="pod-links">
-            <a href="https://www.youtube.com/watch?v=NlOjfIw2RbE" target="_blank" class="btn btn-primary">Watch on YouTube</a>
-            <a href="https://open.spotify.com/episode/7pkFtR6pNInjmKsBflmgp6" target="_blank" class="btn btn-outline">Listen on Spotify</a>
+        </div>
+        <div class="pod-grid">
+          <div class="pod-card fade-in">
+            <div class="tag">Watch &middot; YouTube</div>
+            <h3>Watch the episode</h3>
+            <p>See the full conversation on video.</p>
+            <div class="pod-embed"><iframe src="https://www.youtube.com/embed/NlOjfIw2RbE" title="AI &amp; ESG Data Collection with Charly Bastard | Planted in Business Ep. 1" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            <a href="https://www.youtube.com/watch?v=NlOjfIw2RbE" target="_blank" class="btn btn-outline">Open on YouTube</a>
+          </div>
+          <div class="pod-card fade-in">
+            <div class="tag">Listen &middot; Spotify</div>
+            <h3>Listen to the episode</h3>
+            <p>Take it with you, audio only.</p>
+            <iframe class="pod-spotify" src="https://open.spotify.com/embed/episode/7pkFtR6pNInjmKsBflmgp6" title="Planted in Business Episode 1 on Spotify" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            <a href="https://open.spotify.com/episode/7pkFtR6pNInjmKsBflmgp6" target="_blank" class="btn btn-outline">Open on Spotify</a>
           </div>
         </div>
       </article>
