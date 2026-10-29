@@ -359,23 +359,23 @@ nav#navLinks a:hover{color:var(--forest);}
 .pod-ep:last-child{margin-bottom:0;}
 .pod-ep-head{margin-bottom:30px;}
 .pod-hero{display:flex;align-items:center;gap:40px;}
-.pod-hero img{width:220px;height:220px;flex-shrink:0;border-radius:20px;border:2.5px solid var(--forest);box-shadow:var(--shadow-hard);object-fit:cover;}
+.pod-hero img{width:230px;height:230px;flex-shrink:0;object-fit:contain;}
 .pod-hero .sec-head{margin-bottom:0;}
-.pod-ep-head{display:flex;align-items:center;gap:34px;background:var(--forest);color:var(--cream);border-radius:20px;padding:34px 40px;box-shadow:var(--shadow-hard-dark);}
-.pod-ep-num{flex-shrink:0;text-align:center;font-family:var(--display);line-height:1;padding-right:34px;border-right:2px solid rgba(241,236,221,.35);}
-.pod-ep-num span{display:block;font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-bottom:6px;}
-.pod-ep-num b{display:block;font-size:110px;font-weight:800;}
-.pod-ep-head h3{font-size:clamp(26px,3.4vw,40px);line-height:1.15;margin-bottom:12px;color:var(--cream);}
-.pod-ep-head p{font-size:16px;line-height:1.6;color:var(--cream);opacity:.85;max-width:820px;}
-@media (max-width:900px){.pod-hero{flex-direction:column;align-items:flex-start;gap:24px;}.pod-hero img{width:160px;height:160px;}.pod-ep-head{flex-direction:column;align-items:flex-start;padding:28px 24px;gap:18px;}.pod-ep-num{border-right:0;padding-right:0;text-align:left;}.pod-ep-num b{font-size:80px;}}
-.pod-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 30px;align-items:start;}
+.pod-ep-head{display:flex;align-items:center;gap:24px;background:var(--forest);color:var(--cream);border-radius:16px;padding:22px 28px;box-shadow:var(--shadow-hard);}
+.pod-ep-num{flex-shrink:0;text-align:center;font-family:var(--display);line-height:1;padding-right:24px;border-right:2px solid rgba(241,236,221,.35);}
+.pod-ep-num span{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-bottom:6px;}
+.pod-ep-num b{display:block;font-size:56px;font-weight:800;}
+.pod-ep-head h3{font-size:clamp(19px,2vw,23px);line-height:1.25;margin-bottom:8px;color:var(--cream);}
+.pod-ep-head p{font-size:14px;line-height:1.6;color:var(--cream);opacity:.85;max-width:820px;}
+@media (max-width:900px){.pod-hero{flex-direction:column;align-items:flex-start;gap:24px;}.pod-hero img{width:160px;height:160px;}.pod-ep-head{flex-direction:column;align-items:flex-start;padding:20px;gap:12px;}.pod-ep-num{border-right:0;padding-right:0;text-align:left;}.pod-ep-num b{font-size:44px;}}
+.pod-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 30px;align-items:stretch;}
 .pod-card{background:var(--paper);border:2.5px solid var(--forest);border-radius:16px;padding:26px;box-shadow:var(--shadow-hard);display:flex;flex-direction:column;}
 .pod-card .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:10px;}
 .pod-card h3{font-size:21px;margin-bottom:8px;}
 .pod-card p{font-size:13.5px;color:var(--muted);margin-bottom:18px;}
 .pod-embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:2px solid var(--forest);background:var(--ink);}
 .pod-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
-.pod-spotify{width:100%;height:352px;border:0;border-radius:12px;}
+.pod-spotify{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;}
 .pod-card .btn{margin-top:18px;align-self:flex-start;}
 @media (max-width:900px){.pod-grid{grid-template-columns:1fr;}}
 
@@ -838,7 +838,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
 <section class="section-pad grain" id="podcast">
   <div class="wrap">
     <div class="pod-hero fade-in">
-    <img src="assets/planted-in-business-logo.jpg" alt="Planted in Business podcast logo">
+    <img src="assets/planted-in-business-logo.png" alt="Planted in Business podcast logo">
     <div class="sec-head">
       <h2>The JSEC Podcast</h2>
       <p>Planted in Business is JSEC&rsquo;s podcast, where we talk with leaders building a more sustainable future through business. Pick an episode, then watch it on YouTube or listen on Spotify.</p>
@@ -856,14 +856,12 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
         </div>
         <div class="pod-grid">
           <div class="pod-card fade-in">
-            <div class="tag">Watch &middot; YouTube</div>
             <h3>Watch the episode</h3>
             <p>See the full conversation on video.</p>
             <div class="pod-embed"><iframe src="https://www.youtube.com/embed/NlOjfIw2RbE" title="AI &amp; ESG Data Collection with Charly Bastard | Planted in Business Ep. 1" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
             <a href="https://www.youtube.com/watch?v=NlOjfIw2RbE" target="_blank" class="btn btn-outline">Open on YouTube</a>
           </div>
           <div class="pod-card fade-in">
-            <div class="tag">Listen &middot; Spotify</div>
             <h3>Listen to the episode</h3>
             <p>Take it with you, audio only.</p>
             <iframe class="pod-spotify" src="https://open.spotify.com/embed/episode/7pkFtR6pNInjmKsBflmgp6" title="Planted in Business Episode 1 on Spotify" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
