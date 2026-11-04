@@ -233,6 +233,22 @@ nav#navLinks a:hover{color:var(--forest);}
 .team-card li b{font-weight:700;}
 .team-card li span{display:block;color:var(--muted);font-size:12.5px;}
 
+/* Portfolio photo gallery */
+.pf-gallery{position:relative;max-width:900px;margin:0 auto 60px;}
+.pf-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;border:2.5px solid var(--forest);border-radius:16px;background:var(--white);box-shadow:var(--shadow-hard-sm);}
+.pf-track::-webkit-scrollbar{display:none;}
+.pf-slide{flex:0 0 100%;margin:0;scroll-snap-align:start;}
+.pf-slide img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;}
+.pf-slide figcaption{padding:14px 18px;text-align:center;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--forest);}
+.pf-arrow{position:absolute;top:calc(50% - 44px);width:44px;height:44px;border-radius:50%;border:2px solid var(--forest);background:var(--white);color:var(--forest);font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 3px;}
+.pf-arrow:disabled{opacity:.35;cursor:default;}
+.pf-prev{left:12px;}
+.pf-next{right:12px;}
+.pf-dots{display:flex;justify-content:center;gap:8px;margin-top:14px;}
+.pf-dots button{width:10px;height:10px;padding:0;border-radius:50%;border:1.5px solid var(--forest);background:transparent;cursor:pointer;}
+.pf-dots button[aria-current="true"]{background:var(--forest);}
+@media(max-width:600px){.pf-arrow{width:36px;height:36px;font-size:22px;top:calc(50% - 40px);}.pf-prev{left:6px;}.pf-next{right:6px;}.pf-slide figcaption{font-size:16px;padding:10px 12px;}}
+
 /* ============ GET INVOLVED ============ */
 .tabs-bar{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:30px;flex-wrap:wrap;}
 .tab-btn{
@@ -521,7 +537,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       </div>
     </div>
     <div class="hero-collage fade-in">
-      <div class="polaroid hc-1 rot-1"><img src="assets/team-photo.jpg" alt="JSEC team on campus"></div>
+      <div class="polaroid hc-1 rot-1"><img src="assets/portfolio-full-team.jpg" alt="JSEC 2026-2027 team"></div>
       <div class="polaroid hc-2 rot-2"><img src="assets/event-finance.jpg" alt="JSEC sustainability conference"></div>
       <div class="hc-badge hc-badge-1"><div class="big">2016</div><div class="small">Fair&nbsp;Trade</div></div>
       <div class="hc-badge hc-badge-2"><div class="big">3</div><div class="small">Pillars</div></div>
@@ -613,13 +629,30 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
 
     <div class="team-collage">
       <div class="stage fade-in">
-        <div class="polaroid tc-solo rot-1"><img src="assets/team-photo.jpg" alt="JSEC team on campus"></div>
+        <div class="polaroid tc-solo rot-1"><img src="assets/portfolio-full-team.jpg" alt="JSEC 2026-2027 team"></div>
       </div>
       <div class="fade-in">
         <h3>Students building the bridge between business and sustainability</h3>
         <p>Our 2026–2027 exec team spans Projects, Marketing, Events, and External/Internal Affairs — each running programs like Business Beyond Tomorrow, ASTRA Workshops, and our mentorship program.</p>
         <a href="#page-get-involved" data-page="page-get-involved" class="btn btn-outline">See how to join</a>
       </div>
+    </div>
+
+    <div class="pf-gallery fade-in" data-pf-gallery aria-label="Team photos by portfolio" role="group">
+      <div class="pf-track" tabindex="0">
+        <figure class="pf-slide"><img src="assets/portfolio-team-fun.jpg" alt="JSEC 2026-2027 team posing playfully on the stairs" width="1333" height="889" loading="eager"><figcaption>The Team</figcaption></figure>
+        <figure class="pf-slide"><img src="assets/portfolio-full-team.jpg" alt="JSEC 2026-2027 executive team on the stairs" width="1500" height="1000" loading="lazy"><figcaption>The Full Team</figcaption></figure>
+        <figure class="pf-slide"><img src="assets/portfolio-presidents.jpg" alt="JSEC Presidents" width="1500" height="1000" loading="lazy"><figcaption>Presidents</figcaption></figure>
+        <figure class="pf-slide"><img src="assets/portfolio-internal-finance.jpg" alt="JSEC Internal and Finance team" width="1500" height="1000" loading="lazy"><figcaption>Internal &amp; Finance</figcaption></figure>
+        <figure class="pf-slide"><img src="assets/portfolio-marketing.jpg" alt="JSEC Marketing team" width="1500" height="1000" loading="lazy"><figcaption>Marketing</figcaption></figure>
+        <figure class="pf-slide"><img src="assets/portfolio-events.jpg" alt="JSEC Events team" width="1500" height="1000" loading="lazy"><figcaption>Events</figcaption></figure>
+        <figure class="pf-slide"><img src="assets/portfolio-external-affairs.jpg" alt="JSEC External Affairs team" width="1500" height="1000" loading="lazy"><figcaption>External Affairs</figcaption></figure>
+        <figure class="pf-slide"><img src="assets/portfolio-projects.jpg" alt="JSEC Projects team" width="1500" height="1000" loading="lazy"><figcaption>Projects</figcaption></figure>
+        <figure class="pf-slide"><img src="assets/portfolio-first-year.jpg" alt="JSEC First Year Representatives" width="1500" height="1000" loading="lazy"><figcaption>First Year Representatives</figcaption></figure>
+      </div>
+      <button type="button" class="pf-arrow pf-prev" aria-label="Previous photo">&#8249;</button>
+      <button type="button" class="pf-arrow pf-next" aria-label="Next photo">&#8250;</button>
+      <div class="pf-dots"></div>
     </div>
 
     <div class="team-groups">
@@ -1303,6 +1336,21 @@ document.querySelectorAll('.pod-yt').forEach(function(btn){
     var box=document.createElement('div');box.className='pod-embed';box.appendChild(f);
     btn.replaceWith(box);
   });
+});
+</script>
+<script>
+document.querySelectorAll('[data-pf-gallery]').forEach(function(g){
+  var track=g.querySelector('.pf-track'),slides=[].slice.call(track.children),prev=g.querySelector('.pf-prev'),next=g.querySelector('.pf-next'),dots=g.querySelector('.pf-dots');
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function index(){return Math.round(track.scrollLeft/(track.clientWidth||1));}
+  function go(i){track.scrollTo({left:i*track.clientWidth,behavior:still?'auto':'smooth'});}
+  slides.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show '+s.querySelector('figcaption').textContent);b.addEventListener('click',function(){go(i);});dots.appendChild(b);});
+  function sync(){var i=index();[].forEach.call(dots.children,function(b,k){b.setAttribute('aria-current',k===i?'true':'false');});prev.disabled=i<=0;next.disabled=i>=slides.length-1;}
+  prev.addEventListener('click',function(){go(index()-1);});
+  next.addEventListener('click',function(){go(index()+1);});
+  track.addEventListener('scroll',function(){window.requestAnimationFrame(sync);},{passive:true});
+  track.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();go(index()-1);}if(e.key==='ArrowRight'){e.preventDefault();go(index()+1);}});
+  sync();
 });
 </script>
 </body>
