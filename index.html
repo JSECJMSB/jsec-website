@@ -218,6 +218,8 @@ nav#navLinks a:hover{color:var(--forest);}
 .team-collage .polaroid{position:absolute;}
 .tc-1{width:280px;height:340px;left:10px;top:0;z-index:2;}
 .tc-2{width:230px;height:230px;right:0;bottom:0;z-index:3;}
+.tc-solo{width:min(100%,440px);height:380px;left:0;top:20px;z-index:2;}
+.team-card-first-year{grid-column:2;}
 .team-collage h3{font-size:clamp(24px,2.6vw,32px);margin-bottom:16px;}
 .team-collage p{color:var(--muted);font-size:15px;margin-bottom:22px;}
 .team-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px;}
@@ -465,6 +467,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
   .deliver-grid{grid-template-columns:repeat(2,1fr);}
   .team-collage{grid-template-columns:1fr;}
   .team-groups{grid-template-columns:1fr 1fr;}
+  .team-card-first-year{grid-column:auto;}
   .events-grid{grid-template-columns:1fr 1fr;}
   .blog-grid{grid-template-columns:1fr 1fr;}
   .res-list{grid-template-columns:1fr;}
@@ -610,8 +613,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
 
     <div class="team-collage">
       <div class="stage fade-in">
-        <div class="polaroid tc-1 rot-2"><img src="assets/jsec-exec-team-2026-2027.png" alt="JSEC 2026-2027 executive team" style="object-fit:contain;background:#fff;"></div>
-        <div class="polaroid tc-2 rot-1"><img src="assets/team-photo.jpg" alt="JSEC team on campus"></div>
+        <div class="polaroid tc-solo rot-1"><img src="assets/team-photo.jpg" alt="JSEC team on campus"></div>
       </div>
       <div class="fade-in">
         <h3>Students building the bridge between business and sustainability</h3>
@@ -664,6 +666,13 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
           <li><b>Alex Abourjeilly</b><span>VP Projects</span></li>
           <li><b>Aayla Boulboul</b><span>Director of Projects</span></li>
           <li><b>Nakesha Jeauvin</b><span>Director of Projects</span></li>
+        </ul>
+      </div>
+      <div class="team-card team-card-first-year fade-in">
+        <h4>First Year Representatives</h4>
+        <ul>
+          <li><b>Shuye Yuan</b><span>First Year Representative</span></li>
+          <li><b>Bernardo Fanti</b><span>First Year Representative</span></li>
         </ul>
       </div>
     </div>
