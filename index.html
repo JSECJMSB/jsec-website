@@ -501,6 +501,47 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
   .strip-inner{grid-template-columns:1fr 1fr;}
   .nl-form{flex-direction:column;}
 }
+/* ============ CONSISTENT FRAME (all screens) ============ */
+:root{--gutter:clamp(20px,4vw,32px);}
+.wrap{padding-left:var(--gutter);padding-right:var(--gutter);}
+.nav-inner{padding-left:var(--gutter);padding-right:var(--gutter);}
+.photo-banner .cap{left:max(var(--gutter),calc((100% - 1180px)/2 + var(--gutter)));right:var(--gutter);}
+.home-countdown .cd-title{white-space:nowrap;}
+/* big monitors: scale the whole site so it fills the screen like it does on a laptop */
+@media (min-width:1600px){html{zoom:1.15;}}
+@media (min-width:1800px){html{zoom:1.25;}}
+@media (min-width:1920px){html{zoom:1.35;}}
+@media (min-width:2200px){html{zoom:1.5;}}
+@media (min-width:2560px){html{zoom:1.8;}}
+@media (min-width:3200px){html{zoom:2.25;}}
+@media (max-width:1020px){
+  nav#navLinks{padding-left:var(--gutter);padding-right:var(--gutter);}
+}
+@media (max-width:900px){
+  .hero-collage{width:100%;max-width:520px;margin-left:auto;margin-right:auto;}
+  .photo-banner{height:340px;}
+}
+@media (max-width:640px){
+  .hero{padding:40px 0 44px;}
+  .hero-ctas .btn{flex:1 1 100%;text-align:center;justify-content:center;box-sizing:border-box;}
+  .hero-collage{height:350px;margin-top:8px;}
+  .hc-1{width:60%;height:270px;top:0;right:0;}
+  .hc-2{width:46%;height:190px;left:0;bottom:0;}
+  .hc-badge{width:84px;height:84px;}
+  .hc-badge .big{font-size:21px;}
+  .hc-badge .small{font-size:8px;}
+  .hc-badge-1{top:36px;right:auto;left:12%;}
+  .hc-badge-2{bottom:0;right:8%;}
+  .photo-banner{height:260px;}
+  .photo-banner .cap{font-size:17px;bottom:18px;}
+  .tab-panel{padding:20px;}
+  /* countdown: one slim row so it stops covering the page */
+  .home-countdown{flex-direction:row;justify-content:space-between;gap:10px;padding:8px 10px 8px 12px;text-align:left;bottom:12px;width:calc(100% - 24px);max-width:none;box-sizing:border-box;box-shadow:3px 3px 0 var(--forest);}
+  .home-countdown .cd-label{font-size:9px;}
+  .home-countdown .cd-title{font-size:13px;white-space:normal;}
+  .home-countdown .cd-unit{min-width:34px;padding:3px 2px;}
+  .home-countdown .cd-unit b{font-size:14px;}
+}
 </style>
 </head>
 <body>
