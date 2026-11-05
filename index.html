@@ -548,13 +548,18 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
 /* stat strip: 3 now */
 .strip-inner{grid-template-columns:repeat(3,1fr);}
 @media (max-width:640px){.strip-inner{grid-template-columns:1fr;}}
-/* year timeline: slides in left to right on scroll */
+/* year timeline: slides in left to right on scroll, split by semester */
 .strip-inner{grid-template-columns:repeat(2,1fr);}
 .year-tl{margin-top:44px;}
 .yt-title{font-size:24px;color:var(--cream);text-align:center;margin-bottom:30px;}
-.yt-list{list-style:none;margin:0;padding:0;position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
-.yt-list::before{content:"";position:absolute;left:0;right:0;top:6px;height:2px;background:var(--moss);transform:scaleX(0);transform-origin:left;transition:transform 1.4s ease;}
-.yt-list.in::before{transform:scaleX(1);}
+.yt-list{display:grid;grid-template-columns:3fr 2fr;gap:36px;}
+.yt-sem-title{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream);margin-bottom:16px;}
+.yt-track{list-style:none;margin:0;padding:0;position:relative;display:grid;gap:18px;}
+.yt-sem-fall .yt-track{grid-template-columns:repeat(3,1fr);}
+.yt-sem-winter .yt-track{grid-template-columns:repeat(2,1fr);}
+.yt-track::before{content:"";position:absolute;left:0;right:0;top:6px;height:2px;background:var(--moss);transform:scaleX(0);transform-origin:left;transition:transform 1s ease;}
+.yt-sem-winter .yt-track::before{transition-delay:.6s;}
+.yt-list.in .yt-track::before{transform:scaleX(1);}
 .yt-item{position:relative;padding-top:28px;opacity:0;transform:translateX(-60px);transition:opacity .6s ease,transform .6s ease;transition-delay:calc(var(--i)*.2s);}
 .yt-list.in .yt-item{opacity:1;transform:none;}
 .yt-item::before{content:"";position:absolute;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--moss);border:2px solid var(--forest-deep);box-sizing:border-box;}
@@ -564,15 +569,16 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
 .yt-name{display:block;font-size:13.5px;line-height:1.4;}
 .yt-item.yt-past a{opacity:.6;}
 @media (max-width:760px){
-  .yt-list{grid-template-columns:1fr;gap:22px;}
-  .yt-list::before{left:6px;right:auto;top:0;bottom:0;width:2px;height:auto;transform:scaleY(0);transform-origin:top;}
-  .yt-list.in::before{transform:scaleY(1);}
+  .yt-list{grid-template-columns:1fr;gap:30px;}
+  .yt-sem-fall .yt-track,.yt-sem-winter .yt-track{grid-template-columns:1fr;gap:22px;}
+  .yt-track::before{left:6px;right:auto;top:0;bottom:0;width:2px;height:auto;transform:scaleY(0);transform-origin:top;}
+  .yt-list.in .yt-track::before{transform:scaleY(1);}
   .yt-item{padding:0 0 0 30px;}
   .yt-item::before{top:3px;}
 }
 @media (max-width:640px){.strip-inner{grid-template-columns:1fr;}}
 @media (prefers-reduced-motion:reduce){
-  .yt-item,.yt-list::before{transition:none;}
+  .yt-item,.yt-track::before{transition:none;}
 }
 </style>
 </head>
@@ -669,13 +675,23 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
   </div>
   <div class="wrap year-tl">
     <h3 class="yt-title">Our year at JSEC</h3>
-    <ol class="yt-list" data-year-tl>
-      <li class="yt-item" style="--i:0" data-end="2026-09-30T20:00:00-04:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Sep 30, 2026</span><span class="yt-name">Networking Cocktail Event</span></a></li>
-      <li class="yt-item" style="--i:1" data-end="2026-10-22T21:00:00-04:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Oct 22, 2026</span><span class="yt-name">Sustainability Case Competition</span></a></li>
-      <li class="yt-item" style="--i:2" data-end="2026-11-10T21:00:00-05:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Nov 10, 2026</span><span class="yt-name">Sustainable Finance Conference</span></a></li>
-      <li class="yt-item" style="--i:3" data-end="2027-02-18T21:00:00-05:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Feb 18, 2027</span><span class="yt-name">Beginner Case Competition (Winter)</span></a></li>
-      <li class="yt-item" style="--i:4" data-end="2027-04-03T19:00:00-04:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Apr 3, 2027</span><span class="yt-name">Youth Summit</span></a></li>
-    </ol>
+    <div class="yt-list" data-year-tl>
+      <div class="yt-sem yt-sem-fall">
+        <h4 class="yt-sem-title">Fall Semester</h4>
+        <ol class="yt-track">
+          <li class="yt-item" style="--i:0" data-end="2026-09-30T20:00:00-04:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Sep 30, 2026</span><span class="yt-name">Networking Cocktail Event</span></a></li>
+          <li class="yt-item" style="--i:1" data-end="2026-10-22T21:00:00-04:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Oct 22, 2026</span><span class="yt-name">Sustainability Case Competition</span></a></li>
+          <li class="yt-item" style="--i:2" data-end="2026-11-10T21:00:00-05:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Nov 10, 2026</span><span class="yt-name">Sustainable Finance Conference</span></a></li>
+        </ol>
+      </div>
+      <div class="yt-sem yt-sem-winter">
+        <h4 class="yt-sem-title">Winter Semester</h4>
+        <ol class="yt-track">
+          <li class="yt-item" style="--i:3" data-end="2027-02-18T21:00:00-05:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Feb 18, 2027</span><span class="yt-name">Beginner Case Competition (Winter)</span></a></li>
+          <li class="yt-item" style="--i:4" data-end="2027-04-03T19:00:00-04:00"><a href="#page-events" data-page="page-events"><span class="yt-date">Apr 3, 2027</span><span class="yt-name">Youth Summit</span></a></li>
+        </ol>
+      </div>
+    </div>
   </div>
 </div>
 
