@@ -317,7 +317,7 @@ nav#navLinks a:hover{color:var(--forest);}
 .recap-thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:8px;background:var(--white);border-bottom:2.5px solid var(--forest);flex-shrink:0;}
 .recap-thumbs button{position:relative;aspect-ratio:1;padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:#EEEEE6;}
 .recap-thumbs img{width:100%;height:100%;object-fit:cover;display:block;}
-.recap-thumbs .recap-label{grid-column:1/-1;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--forest);padding:2px 2px 0;}
+.recap-thumbs .recap-label{grid-column:1/-1;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--forest);opacity:.75;padding:2px 2px 0;}
 .recap-thumbs .more span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(18,62,54,.72);color:#fff;font-weight:800;font-size:15px;}
 .recap-viewer{position:fixed;inset:0;z-index:1000;background:rgba(10,30,26,.97);display:none;flex-direction:column;align-items:center;justify-content:center;padding:56px 16px 16px;}
 .recap-viewer.open{display:flex;}
@@ -1392,7 +1392,7 @@ showPage((location.hash || '#page-home').replace('#',''));
     var card=box.closest('.event-card'),track=box.querySelector('.recap-track'),imgs=[].slice.call(track.querySelectorAll('img')),main=box.querySelector('.recap-main'),strip=card.querySelector('.recap-thumbs'),SHOW=5;
     var groups=[];imgs.forEach(function(im,i){var g=im.getAttribute('data-group')||'';var last=groups[groups.length-1];if(!last||last.name!==g) groups.push({name:g,start:i,items:[]});groups[groups.length-1].items.push(im);});
     groups.forEach(function(gr){
-    if(gr.name){var lb=document.createElement('div');lb.className='recap-label';lb.textContent=gr.name+' · '+gr.items.length;strip.appendChild(lb);}
+    if(gr.name){var lb=document.createElement('div');lb.className='recap-label';lb.textContent=gr.name;strip.appendChild(lb);}
     var gi=gr.items;
     gi.slice(0,SHOW).forEach(function(im,k){var i=gr.start+k;
       var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',im.alt);
