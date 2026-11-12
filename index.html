@@ -597,6 +597,21 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
 .hs-tt svg{filter:drop-shadow(1.2px .8px 0 #FE2C55) drop-shadow(-1.2px -.8px 0 #25F4EE);}
 .hs-fb{background:#1877F2;}
 .hs-lt{background:#43E660;color:#000 !important;}
+
+/* SOCIAL POP: hero icons bounce in; a floating stack pops out on the side after scrolling past the hero (Home only) */
+.hero-social a{width:40px;height:40px;box-shadow:0 3px 0 rgba(18,62,54,.25);opacity:0;transform:scale(.3);animation:hsPop .55s cubic-bezier(.34,1.7,.5,1) forwards;}
+.hero-social a:nth-of-type(1){animation-delay:.5s}.hero-social a:nth-of-type(2){animation-delay:.62s}.hero-social a:nth-of-type(3){animation-delay:.74s}.hero-social a:nth-of-type(4){animation-delay:.86s}
+.hero-social svg{width:19px;height:19px;}
+.hero-social a:hover{transform:translateY(-3px) rotate(-8deg) scale(1.08);opacity:1;}
+@keyframes hsPop{to{opacity:1;transform:scale(1)}}
+.social-float{position:fixed;right:18px;top:50%;z-index:44;display:flex;flex-direction:column;gap:10px;padding:10px 8px;background:var(--cream);border:2.5px solid var(--forest);border-radius:999px;box-shadow:4px 4px 0 var(--forest);transform:translate(140%,-50%);transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
+.social-float.show{transform:translate(0,-50%);}
+.social-float a{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:transform .15s;}
+.social-float a:hover{transform:scale(1.12) rotate(-8deg);}
+.social-float svg{width:18px;height:18px;fill:currentColor;}
+.social-float.show a{animation:sfWiggle .6s ease .35s;}
+@keyframes sfWiggle{0%,100%{transform:rotate(0)}30%{transform:rotate(-14deg) scale(1.1)}60%{transform:rotate(10deg)}}
+@media(max-width:640px){.social-float{right:10px;gap:8px;padding:8px 6px;}.social-float a{width:32px;height:32px;}.social-float svg{width:15px;height:15px;}}
 </style>
 </head>
 <body>
@@ -1475,6 +1490,19 @@ document.querySelectorAll('[data-pf-gallery]').forEach(function(g){
   track.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();go(index()-1);}if(e.key==='ArrowRight'){e.preventDefault();go(index()+1);}});
   sync();
 });
+</script>
+
+<script>
+/* Floating social stack: clones the hero icons, pops in once the hero is scrolled past (Home only). */
+(function(){
+  var src=document.querySelector('.hero-social'),hero=document.querySelector('#home');if(!src||!hero) return;
+  var f=document.createElement('div');f.className='social-float';f.setAttribute('aria-label','Follow JSEC');
+  [].forEach.call(src.querySelectorAll('a'),function(a){f.appendChild(a.cloneNode(true));});
+  document.body.appendChild(f);
+  var home=document.getElementById('page-home');
+  function tick(){var on=home.classList.contains('active')&&hero.getBoundingClientRect().bottom<80;f.classList.toggle('show',on);}
+  window.addEventListener('scroll',tick,{passive:true});document.addEventListener('click',function(){setTimeout(tick,60);});tick();
+})();
 </script>
 </body>
 </html>
