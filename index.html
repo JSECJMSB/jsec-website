@@ -321,7 +321,9 @@ nav#navLinks a:hover{color:var(--forest);}
 .recap-viewer{position:fixed;inset:0;z-index:1000;background:rgba(10,30,26,.97);display:none;flex-direction:column;align-items:center;justify-content:center;padding:56px 16px 16px;}
 .recap-viewer.open{display:flex;}
 .recap-viewer .rv-main{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;}
-.recap-viewer .rv-main img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;}
+.recap-viewer .rv-main img,.recap-viewer .rv-main video{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;}
+.recap-thumbs .is-vid::after,.recap-viewer .rv-thumbs .vt::after{content:"\25B6";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;text-shadow:0 1px 6px rgba(0,0,0,.7);pointer-events:none;}
+.recap-viewer .rv-thumbs .vt{position:relative;flex-shrink:0;line-height:0;}
 .recap-viewer .rv-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;color:#fff;font-size:14px;font-weight:700;}
 .recap-viewer .rv-close{background:none;border:0;color:#fff;font-size:30px;cursor:pointer;line-height:1;}
 .recap-viewer .rv-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:30px;cursor:pointer;padding:0 0 4px;}
@@ -898,13 +900,12 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       </div>
 
       <div class="event-card fade-in" data-start="2026-11-10T17:45:00-05:00" data-end="2026-11-10T21:00:00-05:00">
-        <div class="event-photo"><img src="assets/poster-sustainable-finance-2026.jpg" alt="Save the Date: JSEC Sustainable Finance Conference, Nov. 10, 5:45 PM to 9 PM, Espace Rodier"></div>
+        <div class="event-photo has-recap"><div class="recap-track"><img src="assets/sustainable-finance-2026/01-sm.jpg" data-full="assets/sustainable-finance-2026/01.jpg" alt="JSEC team at the Sustainable Finance Conference" loading="lazy"><img src="assets/sustainable-finance-2026/02-sm.jpg" data-full="assets/sustainable-finance-2026/02.jpg" alt="Speakers chatting before the conference" loading="lazy"><img src="assets/sustainable-finance-2026/03-sm.jpg" data-full="assets/sustainable-finance-2026/03.jpg" alt="AI and Climate Investment panel slide with moderator and panelists" loading="lazy"><img src="assets/sustainable-finance-2026/04-sm.jpg" data-full="assets/sustainable-finance-2026/04.jpg" alt="Louis Beaumier speaking on the AI and Climate Investment panel" loading="lazy"><img src="assets/sustainable-finance-2026/05-sm.jpg" data-full="assets/sustainable-finance-2026/05.jpg" alt="Charly Bastard speaking on the AI and Climate Investment panel" loading="lazy"><img src="assets/sustainable-finance-2026/06-sm.jpg" data-full="assets/sustainable-finance-2026/06.jpg" alt="Networking break at Espace Rodier" loading="lazy"><img src="assets/sustainable-finance-2026/v01-sm.jpg" data-video="assets/sustainable-finance-2026/v01.mp4" alt="Video: the panel on stage" loading="lazy"><img src="assets/sustainable-finance-2026/v02-sm.jpg" data-video="assets/sustainable-finance-2026/v02.mp4" alt="Video: the AI and Climate Investment panel" loading="lazy"><img src="assets/sustainable-finance-2026/v03-sm.jpg" data-video="assets/sustainable-finance-2026/v03.mp4" alt="Video: panelists answering questions" loading="lazy"><img src="assets/sustainable-finance-2026/v04-sm.jpg" data-video="assets/sustainable-finance-2026/v04.mp4" alt="Video: the panel discussion" loading="lazy"><img src="assets/sustainable-finance-2026/v05-sm.jpg" data-video="assets/sustainable-finance-2026/v05.mp4" alt="Video: networking break" loading="lazy"><img src="assets/sustainable-finance-2026/v06-sm.jpg" data-video="assets/sustainable-finance-2026/v06.mp4" alt="Video: guests networking" loading="lazy"></div><img class="recap-main" src="assets/poster-sustainable-finance-2026.jpg" alt="Save the Date: JSEC Sustainable Finance Conference, Nov. 10, 5:45 PM to 9 PM, Espace Rodier"></div><div class="recap-thumbs"></div>
         <div class="event-body">
           <div class="event-date">Nov 10, 2026 · 5:45–9:00 PM</div>
           <div class="meta">Espace Rodier · Montréal</div>
           <h3>Sustainable Finance Conference</h3>
           <p>Join industry professionals to explore how sustainability is shaping the world of finance. Two panels: 🌍 The Energy Transition and 🤖 AI and Climate Investment. Hear from investment professionals, consultants, and industry leaders on the challenges, opportunities, and real-world applications of sustainable finance. Passionate about finance, curious about sustainability, or just looking to learn something new? There's something here for you!</p>
-                  <a href="https://evelya.co/john-molson-school-of-business/john-molson-sustainable-enterprise-committee/jsec-sustainable-finance-conference-9835" target="_blank" class="btn btn-primary">Get Tickets</a>
         </div>
       </div>
 
@@ -1392,6 +1393,7 @@ showPage((location.hash || '#page-home').replace('#',''));
     imgs.slice(0,SHOW).forEach(function(im,i){
       var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',im.alt);
       b.innerHTML='<img src="'+im.getAttribute('src')+'" alt="" loading="lazy">';
+      if(im.hasAttribute('data-video')) b.className='is-vid';
       var last=i===SHOW-1&&imgs.length>SHOW;
       if(last){b.className='more';b.insertAdjacentHTML('beforeend','<span>+'+(imgs.length-SHOW+1)+'</span>');b.setAttribute('aria-label','See all '+imgs.length+' photos');}
       b.addEventListener('click',function(){open(i);});
@@ -1402,7 +1404,7 @@ showPage((location.hash || '#page-home').replace('#',''));
       v=document.createElement('div');v.className='recap-viewer';v.setAttribute('role','dialog');v.setAttribute('aria-modal','true');
       v.innerHTML='<div class="rv-top"><span class="rv-title"></span><button class="rv-close" aria-label="Close">&times;</button></div><div class="rv-main"><img alt=""></div><button class="rv-nav rv-prev" aria-label="Previous photo">&#8249;</button><button class="rv-nav rv-next" aria-label="Next photo">&#8250;</button><div class="rv-thumbs"></div>';
       var th=v.querySelector('.rv-thumbs');
-      imgs.forEach(function(im,i){var t=document.createElement('img');t.src=im.getAttribute('src');t.alt=im.alt;t.loading='lazy';t.addEventListener('click',function(){show(i);});th.appendChild(t);});
+      imgs.forEach(function(im,i){var t=document.createElement('img');t.src=im.getAttribute('src');t.alt=im.alt;t.loading='lazy';t.addEventListener('click',function(){show(i);});if(im.hasAttribute('data-video')){var w=document.createElement('span');w.className='vt';w.appendChild(t);th.appendChild(w);}else th.appendChild(t);});
       v.querySelector('.rv-close').addEventListener('click',close);
       v.querySelector('.rv-prev').addEventListener('click',function(){show(cur-1);});
       v.querySelector('.rv-next').addEventListener('click',function(){show(cur+1);});
@@ -1413,12 +1415,14 @@ showPage((location.hash || '#page-home').replace('#',''));
     }
     function show(i){
       cur=(i+imgs.length)%imgs.length;
-      var big=v.querySelector('.rv-main img');big.src=imgs[cur].getAttribute('data-full');big.alt=imgs[cur].alt;
+      var m=v.querySelector('.rv-main'),vid=imgs[cur].getAttribute('data-video');
+      if(vid){m.innerHTML='<video controls autoplay playsinline preload="metadata"></video>';var ve=m.firstChild;ve.src=vid;ve.poster=imgs[cur].getAttribute('src');ve.setAttribute('aria-label',imgs[cur].alt);}
+      else{m.innerHTML='<img alt="">';var big=m.firstChild;big.src=imgs[cur].getAttribute('data-full');big.alt=imgs[cur].alt;}
       v.querySelector('.rv-title').textContent=card.querySelector('h3').textContent+' · '+(cur+1)+' / '+imgs.length;
       [].forEach.call(v.querySelectorAll('.rv-thumbs img'),function(t,j){t.classList.toggle('on',j===cur);if(j===cur) t.scrollIntoView({block:'nearest',inline:'center'});});
     }
     function open(i){if(!v) build();v.classList.add('open');document.body.style.overflow='hidden';show(i);}
-    function close(){v.classList.remove('open');document.body.style.overflow='';}
+    function close(){v.classList.remove('open');document.body.style.overflow='';var ve=v.querySelector('.rv-main video');if(ve) ve.pause();}
     document.addEventListener('keydown',function(e){if(!v||!v.classList.contains('open')) return;if(e.key==='Escape') close();if(e.key==='ArrowRight') show(cur+1);if(e.key==='ArrowLeft') show(cur-1);});
     main.addEventListener('click',function(){open(0);});
   });
