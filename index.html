@@ -391,6 +391,9 @@ nav#navLinks a:hover{color:var(--forest);}
 @media (max-width:900px){.pod-hero{flex-direction:column;align-items:flex-start;gap:24px;}.pod-hero img{width:160px;height:160px;}.pod-ep-head{flex-direction:column;align-items:flex-start;padding:20px;gap:12px;}.pod-ep-num{border-right:0;padding-right:0;text-align:left;}.pod-ep-num b{font-size:44px;}}
 .pod-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 30px;align-items:stretch;}
 .pod-embed{border:2.5px solid var(--forest);border-radius:16px;box-shadow:var(--shadow-hard);margin-bottom:6px;}
+.pod-yt.pod-poster{aspect-ratio:480/853;width:min(100%,300px);margin:0 auto 6px;background:var(--forest);}
+.pod-ep-poster .pod-card{min-height:0;}
+.pod-ep-poster .pod-spotify{aspect-ratio:auto;flex:1 1 auto;height:auto;min-height:352px;}
 .pod-card{background:var(--paper);border:2.5px solid var(--forest);border-radius:16px;padding:26px;box-shadow:var(--shadow-hard);display:flex;flex-direction:column;}
 .pod-card .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:10px;}
 .pod-card h3{font-size:21px;margin-bottom:8px;}
@@ -1012,7 +1015,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
     </div>
     <div class="pod-list" style="margin-top:50px">
       <!-- Episode 2 (add new episodes on top: copy this whole article block) -->
-      <article class="pod-ep">
+      <article class="pod-ep pod-ep-poster">
         <div class="pod-ep-head fade-in">
           <div class="pod-ep-num"><span>Episode</span><b>2</b></div>
           <div>
@@ -1024,7 +1027,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
           <div class="pod-card fade-in">
             <h3>Watch the episode</h3>
             <p>See the full conversation on video.</p>
-            <button type="button" class="pod-embed pod-yt" data-yt="DQaosuRa5ec" aria-label="Play Episode 2: Growing Sustainability with Irene Xin"><img src="assets/podcast-ep2-thumb.jpg" alt="" loading="lazy"><span class="pod-play"></span></button>
+            <button type="button" class="pod-embed pod-yt pod-poster" data-yt="DQaosuRa5ec" aria-label="Play Episode 2: Growing Sustainability with Irene Xin"><img src="assets/podcast-ep2.jpg" alt="Planted in Business Episode 2 poster" loading="lazy"><span class="pod-play"></span></button>
           </div>
           <div class="pod-card fade-in">
             <h3>Listen to the episode</h3>
@@ -1035,7 +1038,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
       </article>
 
       <!-- Episode 1 -->
-      <article class="pod-ep">
+      <article class="pod-ep pod-ep-poster">
         <div class="pod-ep-head fade-in">
           <div class="pod-ep-num"><span>Episode</span><b>1</b></div>
           <div>
@@ -1047,7 +1050,7 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
           <div class="pod-card fade-in">
             <h3>Watch the episode</h3>
             <p>See the full conversation on video.</p>
-            <button type="button" class="pod-embed pod-yt" data-yt="NlOjfIw2RbE" aria-label="Play AI &amp; ESG Data Collection with Charly Bastard | Planted in Business Ep. 1"><img src="https://i.ytimg.com/vi/NlOjfIw2RbE/maxresdefault.jpg" alt="" loading="lazy"><span class="pod-play"></span></button>
+            <button type="button" class="pod-embed pod-yt pod-poster" data-yt="NlOjfIw2RbE" aria-label="Play AI &amp; ESG Data Collection with Charly Bastard | Planted in Business Ep. 1"><img src="assets/podcast-ep1.jpg" alt="Planted in Business Episode 1 poster" loading="lazy"><span class="pod-play"></span></button>
           </div>
           <div class="pod-card fade-in">
             <h3>Listen to the episode</h3>
