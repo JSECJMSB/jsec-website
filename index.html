@@ -391,9 +391,21 @@ nav#navLinks a:hover{color:var(--forest);}
 @media (max-width:900px){.pod-hero{flex-direction:column;align-items:flex-start;gap:24px;}.pod-hero img{width:160px;height:160px;}.pod-ep-head{flex-direction:column;align-items:flex-start;padding:20px;gap:12px;}.pod-ep-num{border-right:0;padding-right:0;text-align:left;}.pod-ep-num b{font-size:44px;}}
 .pod-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 30px;align-items:stretch;}
 .pod-embed{border:2.5px solid var(--forest);border-radius:16px;box-shadow:var(--shadow-hard);margin-bottom:6px;}
-.pod-yt.pod-poster{aspect-ratio:480/853;width:min(100%,300px);margin:0 auto 6px;background:var(--forest);}
+.pod-yt.pod-poster{aspect-ratio:480/853;width:min(100%,210px);margin:0 auto 6px;background:var(--forest);}
 .pod-ep-poster .pod-card{min-height:0;}
 .pod-ep-poster .pod-spotify{aspect-ratio:auto;flex:1 1 auto;height:auto;min-height:352px;}
+/* compact podcast episodes */
+.pod-ep{margin-bottom:40px;}
+.pod-ep-head{padding:14px 22px;gap:18px;margin-bottom:20px;}
+.pod-ep-num{padding-right:18px;}
+.pod-ep-num span{font-size:10px;margin-bottom:4px;}
+.pod-ep-num b{font-size:38px;}
+.pod-ep-head h3{font-size:clamp(16px,1.5vw,19px);margin-bottom:6px;}
+.pod-ep-head p{font-size:13px;line-height:1.55;}
+.pod-grid{gap:24px;}
+.pod-card{padding:18px 20px;}
+.pod-card h3{font-size:17px;margin-bottom:4px;}
+.pod-card p{font-size:12.5px;margin-bottom:12px;}
 .pod-card{background:var(--paper);border:2.5px solid var(--forest);border-radius:16px;padding:26px;box-shadow:var(--shadow-hard);display:flex;flex-direction:column;}
 .pod-card .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:10px;}
 .pod-card h3{font-size:21px;margin-bottom:8px;}
