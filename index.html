@@ -625,7 +625,17 @@ footer li{font-size:13.5px;margin-bottom:10px;color:rgba(241,236,221,0.85);}
 .social-float svg{width:18px;height:18px;fill:currentColor;}
 .social-float.show a{animation:sfWiggle .6s ease .35s;}
 @keyframes sfWiggle{0%,100%{transform:rotate(0)}30%{transform:rotate(-14deg) scale(1.1)}60%{transform:rotate(10deg)}}
-@media(max-width:640px){.social-float{right:10px;gap:8px;padding:8px 6px;}.social-float a{width:32px;height:32px;}.social-float svg{width:15px;height:15px;}}
+.sf-toggle{display:none;}
+/* Phones/tablets: the stack would cover photos and text, so it collapses into one small button in the bottom-right corner that opens the icons. */
+@media(max-width:900px){
+  .social-float{top:auto;bottom:var(--sf-bottom,16px);right:12px;padding:6px;gap:8px;transform:translate(160%,0);transition:transform .45s cubic-bezier(.34,1.56,.64,1),bottom .3s ease;}
+  .social-float.show{transform:translate(0,0);}
+  .social-float a{display:none;width:34px;height:34px;}
+  .social-float.open a{display:flex;}
+  .social-float svg{width:16px;height:16px;}
+  .sf-toggle{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:0;padding:0;background:var(--forest);color:var(--cream);font-size:22px;line-height:1;cursor:pointer;transition:transform .2s;}
+  .social-float.open .sf-toggle{transform:rotate(45deg);}
+}
 </style>
 </head>
 <body>
@@ -1519,10 +1529,18 @@ document.querySelectorAll('[data-pf-gallery]').forEach(function(g){
   var src=document.querySelector('.hero-social'),hero=document.querySelector('#home');if(!src||!hero) return;
   var f=document.createElement('div');f.className='social-float';f.setAttribute('aria-label','Follow JSEC');
   [].forEach.call(src.querySelectorAll('a'),function(a){f.appendChild(a.cloneNode(true));});
+  var t=document.createElement('button');t.type='button';t.className='sf-toggle';t.setAttribute('aria-label','Follow JSEC');t.setAttribute('aria-expanded','false');t.textContent='+';
+  t.addEventListener('click',function(e){e.stopPropagation();var o=f.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
+  f.appendChild(t);
   document.body.appendChild(f);
+  document.addEventListener('click',function(e){if(!f.contains(e.target)){f.classList.remove('open');t.setAttribute('aria-expanded','false');}});
   var home=document.getElementById('page-home');
-  function tick(){var onHome=home.classList.contains('active');var on=!onHome||hero.getBoundingClientRect().bottom<80;f.classList.toggle('show',on);}
-  window.addEventListener('scroll',tick,{passive:true});document.addEventListener('click',function(){setTimeout(tick,60);});tick();
+  function tick(){var onHome=home.classList.contains('active');var on=!onHome||hero.getBoundingClientRect().bottom<80;f.classList.toggle('show',on);
+    /* keep it above the countdown bar when that bar is showing */
+    var cd=document.querySelector('.home-countdown'),b=16;
+    if(cd&&!cd.classList.contains('cd-hidden')&&getComputedStyle(cd).display!=='none'){var r=cd.getBoundingClientRect();if(r.height&&r.top<innerHeight)b=innerHeight-r.top+10;}
+    f.style.setProperty('--sf-bottom',b+'px');}
+  window.addEventListener('scroll',tick,{passive:true});window.addEventListener('resize',tick);document.addEventListener('click',function(){setTimeout(tick,60);});tick();setTimeout(tick,1500);
 })();
 </script>
 </body>
